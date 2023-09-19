@@ -22,7 +22,6 @@ int main(int argc, char *argv[]) {
         while(fgets(myString, 10000, fptr)) {
             printf("%s", myString);
         }
-        printf("\n");
         // Close the file
         fclose(fptr);
     }
