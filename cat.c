@@ -3,41 +3,28 @@
 
 int main(int argc, char *argv[]) {
     FILE *fptr;
-    int j;
+    int i;
 
-    j = -1;
-    for (int i = 0; i < argc; i++) {
-        if(i > 1) {
-            // printf("argv[%d] = %s\n", i, argv[i]);
-            j++;
-        } else {
-            if(j >= 0) {
-                // Open a file in read mode
-                fptr = fopen(argv[i], "r");
+    if (argc <= 1) {
+        printf("argumentos insuficientes\n");
+        return 0;
+    }
+    for(i = 1; i < argc; i++) {
+        // printf("%s\n", argv[i]);
 
-                // Store the content of the file
-                char myString[10000];
+        // Open a file in read mode
+        fptr = fopen(argv[i], "r");
 
-                // Read the content and store it inside myString
-                fgets(myString, 10000, fptr);
+        // Store the content of the file
+        char myString[10000];
 
-                // Print the file content
-                printf("%s", myString);
-                // Close the file
-                fclose(fptr);
-            } else {
-                // Open a file in read mode
-                fptr = fopen(argv[i], "r");
-
-                // Store the content of the file
-                char myString[10000];
-
-                // Read the content and store it inside myString
-                fgets(myString, 100, fptr);
-                fclose(fptr);
-            }
-            // j++;
+        // Read the content and print it
+        while(fgets(myString, 10000, fptr)) {
+            printf("%s", myString);
         }
+        printf("\n");
+        // Close the file
+        fclose(fptr);
     }
     return 0;
 }
